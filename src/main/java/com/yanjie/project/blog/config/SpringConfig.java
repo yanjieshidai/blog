@@ -1,4 +1,4 @@
-package com.wj.project.test.config;
+package com.yanjie.project.blog.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -8,6 +8,6 @@ import org.springframework.context.annotation.ImportResource;
  */
 
 @Configuration
-@ImportResource("classpath:spring-mvc.xml")
-public class SpringMVCConfig {
+@ImportResource({"classpath:spring-mvc.xml", "classpath:spring-jdbc.xml"})
+public class SpringConfig {
 }

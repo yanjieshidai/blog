@@ -1,4 +1,4 @@
-package com.wj.project.test.bean;
+package com.yanjie.project.blog.bean;
 
 /**
  * Created by wangjie12 on 15-7-6.

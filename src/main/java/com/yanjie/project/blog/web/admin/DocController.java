@@ -1,4 +1,4 @@
-package com.wj.project.test.web.admin;
+package com.yanjie.project.blog.web.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +24,7 @@ public class DocController {
     }
 
     @RequestMapping("/list")
+    @ResponseBody
     public String list() {
         return "ok";
     }

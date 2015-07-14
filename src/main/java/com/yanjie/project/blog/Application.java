@@ -1,4 +1,4 @@
-package com.wj.project.test;
+package com.yanjie.project.blog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

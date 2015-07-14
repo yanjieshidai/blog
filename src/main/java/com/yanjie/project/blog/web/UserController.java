@@ -1,10 +1,11 @@
-package com.wj.project.test.web;
+package com.yanjie.project.blog.web;
 
-import com.wj.project.test.bean.User;
-import com.wj.project.test.bean.UserBean;
+import com.yanjie.project.blog.bean.User;
+import com.yanjie.project.blog.bean.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @RequestMapping("/{id}")
+    @ResponseBody
     public User view(@PathVariable("id") Long id) {
         User user = new User();
         user.setId(id);
