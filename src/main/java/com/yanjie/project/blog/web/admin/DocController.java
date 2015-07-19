@@ -1,5 +1,9 @@
 package com.yanjie.project.blog.web.admin;
 
+import com.yanjie.project.blog.bean.AjaxResult;
+import com.yanjie.project.blog.bean.vo.DocVO;
+import com.yanjie.project.blog.service.IBlogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,10 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("admin/doc")
 public class DocController {
 
+    @Autowired
+    private IBlogService blogService;
+
     @RequestMapping("/upload")
     @ResponseBody
-    public String upload() {
-        return "ok";
+    public AjaxResult upload(DocVO docVO) {
+        AjaxResult<DocVO> ajaxResult = blogService.createDoc(docVO);
+        return ajaxResult;
     }
 
     @RequestMapping("re-upload")
