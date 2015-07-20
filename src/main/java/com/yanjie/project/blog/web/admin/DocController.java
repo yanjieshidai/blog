@@ -1,12 +1,16 @@
 package com.yanjie.project.blog.web.admin;
 
 import com.yanjie.project.blog.bean.AjaxResult;
+import com.yanjie.project.blog.bean.vo.BlogVO;
 import com.yanjie.project.blog.bean.vo.DocVO;
 import com.yanjie.project.blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by wangjie12 on 15-7-6.
@@ -32,9 +36,14 @@ public class DocController {
     }
 
     @RequestMapping("/list")
-    @ResponseBody
-    public String list() {
-        return "ok";
+    public ModelAndView list() {
+        ModelAndView mv = new ModelAndView();
+        List<BlogVO> blogVOList = blogService.list();
+        mv.addObject("userName", "wangjie");
+        mv.addObject("docs", blogVOList);
+
+        mv.setViewName("/list");
+        return mv;
     }
 
 

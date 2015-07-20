@@ -18,15 +18,8 @@ public class UserController {
     @RequestMapping("/{id}")
     @ResponseBody
     public User view(@PathVariable("id") Long id) {
-        User user = new User();
-        user.setId(id);
-        user.setName("zhang");
-        if (userBean == null) {
-            user.setName("None");
-        }
-        return user;
+        return null;
     }
 
-    @Autowired
-    private UserBean userBean;
+
 }
