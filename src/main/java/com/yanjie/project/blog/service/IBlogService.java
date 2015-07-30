@@ -15,7 +15,7 @@ import java.util.List;
 public interface IBlogService {
     List<BlogVO> list(SearchParam param);
 
-    BlogVO getBlog(Long id);
+    BlogVO getBlog(SearchParam param);
 
     AjaxResult<DocVO> createDoc(DocVO docVO);
 

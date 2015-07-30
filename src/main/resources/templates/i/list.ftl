@@ -5,7 +5,7 @@
 <label>Blog List:</label>
 
 <#list blogs as item>
-    <a href="/blog/${item.blogPO.id!''}">${item.blogPO.title }</a>
+    <a href="/i/blog/${item.blogPO.id!''}">${item.blogPO.title }</a>
 </#list>
 
 

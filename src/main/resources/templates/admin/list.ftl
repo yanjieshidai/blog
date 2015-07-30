@@ -5,7 +5,7 @@
 <label>Doc List:</label>
 
 <#list docs as item>
-    <a href="/blog/${item.docPO.id!''}">${item.docPO.title }</a>
+    <a href="/admin/doc/${item.docPO.id!''}">${item.docPO.title }</a>
 </#list>
 
 

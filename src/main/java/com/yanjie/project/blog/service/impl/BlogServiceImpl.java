@@ -24,7 +24,7 @@ import java.util.UUID;
  * Create: 2015-07-19
  */
 @Component
-public class IBlogServiceImpl implements IBlogService {
+public class BlogServiceImpl implements IBlogService {
     @Autowired
     private IBlogDAO blogDAO;
 
@@ -39,7 +39,8 @@ public class IBlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public BlogVO getBlog(Long id) {
+    public BlogVO getBlog(SearchParam param) {
+        Long id = param.getId();
         BlogPO blogPO = blogDAO.queryById(id);
         BlogVO blogVO = BlogConvert.convertVOFromPO(blogPO);
         return blogVO;

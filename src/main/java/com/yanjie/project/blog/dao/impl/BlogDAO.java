@@ -1,14 +1,10 @@
 package com.yanjie.project.blog.dao.impl;
 
-import com.yanjie.project.blog.base.JdbcParam;
-import com.yanjie.project.blog.bean.param.SearchParam;
 import com.yanjie.project.blog.bean.po.BlogPO;
 import com.yanjie.project.blog.dao.IBlogDAO;
-import org.markdown4j.Markdown4jProcessor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -28,7 +24,7 @@ public class BlogDAO extends BaseDAO implements IBlogDAO {
         Object[] params = new Object[]{id};
         int[] types = new int[]{Types.INTEGER};
         List<BlogPO> blogs = jdbcTemplate.query(sql, params, types, new BlogMapper());
-        if (blogs == null && blogs.isEmpty()) {
+        if (blogs == null || blogs.isEmpty()) {
             return null;
         }
         return blogs.get(0);

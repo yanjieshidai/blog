@@ -42,8 +42,8 @@ public class DocController {
     public ModelAndView list(SearchParam param) {
         ModelAndView mv = new ModelAndView();
         List<DocVO> docVOList = blogService.listDoc(param);
-        mv.addObject("doc", docVOList);
-        mv.setViewName("/list");
+        mv.addObject("docs", docVOList);
+        mv.setViewName("/admin/list");
         return mv;
     }
 
@@ -53,7 +53,7 @@ public class DocController {
         param.setId(id);
         DocVO docVO = blogService.getDoc(param);
         mv.addObject("doc", docVO);
-        mv.setViewName("/list");
+        mv.setViewName("/admin/doc");
         return mv;
     }
 

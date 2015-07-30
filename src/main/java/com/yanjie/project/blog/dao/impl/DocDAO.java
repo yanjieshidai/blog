@@ -43,7 +43,7 @@ public class DocDAO extends BaseDAO implements IDocDAO {
 
     @Override
     public List<DocPO> queryAll() {
-        String sql = "select * from t_blog";
+        String sql = "select * from t_doc";
         List<DocPO> docs = jdbcTemplate.query(sql, new DocMapper());
         return docs;
     }
@@ -55,7 +55,7 @@ public class DocDAO extends BaseDAO implements IDocDAO {
         Object[] params = new Object[]{id};
         int[] types = new int[]{Types.INTEGER};
         List<DocPO> docs = jdbcTemplate.query(sql, params, types, new DocMapper());
-        if (docs == null && docs.isEmpty()) {
+        if (docs == null || docs.isEmpty()) {
             return null;
         }
         return docs.get(0);
