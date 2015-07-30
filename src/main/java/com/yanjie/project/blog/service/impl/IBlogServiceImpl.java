@@ -2,6 +2,8 @@ package com.yanjie.project.blog.service.impl;
 
 import com.yanjie.project.blog.bean.AjaxResult;
 import com.yanjie.project.blog.bean.convert.BlogConvert;
+import com.yanjie.project.blog.bean.convert.DocConvert;
+import com.yanjie.project.blog.bean.param.SearchParam;
 import com.yanjie.project.blog.bean.po.BlogPO;
 import com.yanjie.project.blog.bean.po.DocPO;
 import com.yanjie.project.blog.bean.vo.BlogVO;
@@ -30,10 +32,17 @@ public class IBlogServiceImpl implements IBlogService {
     private IDocDAO docDAO;
 
     @Override
-    public List<BlogVO> list() {
-        List<BlogPO> blogPOList = blogDAO.list();
+    public List<BlogVO> list(SearchParam param) {
+        List<BlogPO> blogPOList = blogDAO.queryAll();
         List<BlogVO> blogVOList = BlogConvert.convertVOListFromPOList(blogPOList);
         return blogVOList;
+    }
+
+    @Override
+    public BlogVO getBlog(Long id) {
+        BlogPO blogPO = blogDAO.queryById(id);
+        BlogVO blogVO = BlogConvert.convertVOFromPO(blogPO);
+        return blogVO;
     }
 
     @Override
@@ -56,5 +65,22 @@ public class IBlogServiceImpl implements IBlogService {
             result.setSuccess(false);
         }
         return result;
+    }
+
+    @Override
+    public List<DocVO> listDoc(SearchParam param) {
+        List<DocPO> docPOList = docDAO.queryAll();
+        List<DocVO> docVOList = DocConvert.convertVOListFromPOList(docPOList);
+        return docVOList;
+    }
+
+    @Override
+    public DocVO getDoc(SearchParam param) {
+        DocPO docPO = null;
+        if (param.getId() != null) {
+            docPO = docDAO.queryById(param.getId());
+        }
+        DocVO docVO = DocConvert.convertVOFromPO(docPO);
+        return docVO;
     }
 }

@@ -1,5 +1,6 @@
 package com.yanjie.project.blog.web.i;
 
+import com.yanjie.project.blog.bean.param.SearchParam;
 import com.yanjie.project.blog.bean.vo.BlogVO;
 import com.yanjie.project.blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,17 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/i/doc")
-public class IDocController {
+@RequestMapping("/i/blog")
+public class IBlogController {
 
 
     @Autowired
     private IBlogService blogService;
 
-    @RequestMapping("list")
+    @RequestMapping({"/", "/list"})
     @ResponseBody
-    public List<BlogVO> list() {
-        List<BlogVO> blogVOList = blogService.list();
+    public List<BlogVO> list(SearchParam param) {
+        List<BlogVO> blogVOList = blogService.list(param);
         return blogVOList;
     }
 }

@@ -2,6 +2,8 @@ package com.yanjie.project.blog.dao;
 
 import com.yanjie.project.blog.bean.po.DocPO;
 
+import java.util.List;
+
 /**
  * Description: IBlogDAO
  * Author: wangjie12
@@ -9,4 +11,8 @@ import com.yanjie.project.blog.bean.po.DocPO;
  */
 public interface IDocDAO {
     DocPO create(DocPO docPO);
+
+    List<DocPO> queryAll();
+
+    DocPO queryById(Long id);
 }

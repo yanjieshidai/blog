@@ -1,18 +1,11 @@
 <title>博客列表</title>
 
 <body>
-<h1>
-UserName: ${userName!""}
-</h1>
 
 <label>Doc List:</label>
 
 <#list docs as item>
-
-<p>
-    ${item.blogPO.title }
-</p>
-${item.blogPO.context}
+    <a href="/blog/${item.docPO.id!''}">${item.docPO.title }</a>
 </#list>
 
 

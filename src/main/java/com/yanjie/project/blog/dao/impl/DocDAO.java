@@ -1,13 +1,15 @@
 package com.yanjie.project.blog.dao.impl;
 
+import com.yanjie.project.blog.bean.po.BlogPO;
 import com.yanjie.project.blog.bean.po.DocPO;
 import com.yanjie.project.blog.dao.IDocDAO;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.List;
 
 /**
  * Description: BlogDAO
@@ -36,6 +38,38 @@ public class DocDAO extends BaseDAO implements IDocDAO {
         } else {
             System.out.println("插入失败！");
             return null;
+        }
+    }
+
+    @Override
+    public List<DocPO> queryAll() {
+        String sql = "select * from t_blog";
+        List<DocPO> docs = jdbcTemplate.query(sql, new DocMapper());
+        return docs;
+    }
+
+
+    @Override
+    public DocPO queryById(Long id) {
+        String sql = "select * from t_doc where id= ?";
+        Object[] params = new Object[]{id};
+        int[] types = new int[]{Types.INTEGER};
+        List<DocPO> docs = jdbcTemplate.query(sql, params, types, new DocMapper());
+        if (docs == null && docs.isEmpty()) {
+            return null;
+        }
+        return docs.get(0);
+    }
+
+
+    protected class DocMapper implements RowMapper {
+        @Override
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+            DocPO doc = new DocPO();
+            doc.setId(rs.getLong("id"));
+            doc.setTitle(rs.getString("title"));
+            doc.setContext(rs.getString("context"));
+            return doc;
         }
     }
 }

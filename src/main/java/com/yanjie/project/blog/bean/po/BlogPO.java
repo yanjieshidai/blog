@@ -6,15 +6,16 @@ package com.yanjie.project.blog.bean.po;
  * Create: 2015-07-14
  */
 public class BlogPO {
-    private int id;
+    private Long id;
     private String title;
+    private String context;
 
-    public void setId(int id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
-    public int getId() {
-        return id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
@@ -23,5 +24,13 @@ public class BlogPO {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
     }
 }

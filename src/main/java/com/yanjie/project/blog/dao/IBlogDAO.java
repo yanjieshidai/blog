@@ -10,5 +10,7 @@ import java.util.List;
  * Create: 2015-07-14
  */
 public interface IBlogDAO {
-    List<BlogPO> list();
+    BlogPO queryById(Long id);
+
+    List<BlogPO> queryAll();
 }
