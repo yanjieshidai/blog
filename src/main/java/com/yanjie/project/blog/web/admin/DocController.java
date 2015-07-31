@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import java.util.List;
 @RequestMapping("admin/doc")
 public class DocController {
 
-    @Autowired
+    @Resource
     private IBlogService blogService;
 
     @RequestMapping("/upload")

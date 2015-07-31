@@ -12,9 +12,9 @@ import com.yanjie.project.blog.dao.IBlogDAO;
 import com.yanjie.project.blog.dao.IDocDAO;
 import com.yanjie.project.blog.service.IBlogService;
 import com.yanjie.project.blog.util.UserUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,12 +23,12 @@ import java.util.UUID;
  * Author: wangjie12
  * Create: 2015-07-19
  */
-@Component
+@Service
 public class BlogServiceImpl implements IBlogService {
-    @Autowired
+    @Resource
     private IBlogDAO blogDAO;
 
-    @Autowired
+    @Resource
     private IDocDAO docDAO;
 
     @Override

@@ -1,6 +1,5 @@
 package com.yanjie.project.blog.dao.impl;
 
-import com.yanjie.project.blog.bean.po.BlogPO;
 import com.yanjie.project.blog.bean.po.DocPO;
 import com.yanjie.project.blog.dao.IDocDAO;
 import org.springframework.jdbc.core.RowMapper;
