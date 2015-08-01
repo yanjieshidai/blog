@@ -12,12 +12,9 @@ import com.yanjie.project.blog.dao.IBlogDAO;
 import com.yanjie.project.blog.dao.IDocDAO;
 import com.yanjie.project.blog.service.IBlogService;
 import com.yanjie.project.blog.util.UserUtil;
-import com.yanjie.project.util.MarkdownUtil;
-import org.markdown4j.Markdown4jProcessor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.print.Doc;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,7 +54,7 @@ public class BlogServiceImpl implements IBlogService {
         tmp.setContext("这是一个测试~");
         UUID uuid = UUID.randomUUID();
         tmp.setUuid(uuid.toString());
-        tmp.setCreator(UserUtil.getUserId());
+//        tmp.setCreator(UserUtil.getUserId(request));
         docVO.setDocPO(tmp);
 
         DocPO docPO = docDAO.insert(docVO.getDocPO());
