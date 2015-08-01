@@ -12,9 +12,12 @@ import com.yanjie.project.blog.dao.IBlogDAO;
 import com.yanjie.project.blog.dao.IDocDAO;
 import com.yanjie.project.blog.service.IBlogService;
 import com.yanjie.project.blog.util.UserUtil;
+import com.yanjie.project.util.MarkdownUtil;
+import org.markdown4j.Markdown4jProcessor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.print.Doc;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,7 +60,7 @@ public class BlogServiceImpl implements IBlogService {
         tmp.setCreator(UserUtil.getUserId());
         docVO.setDocPO(tmp);
 
-        DocPO docPO = docDAO.create(docVO.getDocPO());
+        DocPO docPO = docDAO.insert(docVO.getDocPO());
         if (docPO != null) {
             docVO.setDocPO(docPO);
             result.setSuccess(true);
@@ -83,5 +86,63 @@ public class BlogServiceImpl implements IBlogService {
         }
         DocVO docVO = DocConvert.convertVOFromPO(docPO);
         return docVO;
+    }
+
+    public AjaxResult<BlogVO> createBlog(DocPO doc) {
+        BlogPO blogPO = BlogConvert.convertFromDoc(doc);
+        blogPO = blogDAO.insert(blogPO);
+        AjaxResult result = new AjaxResult();
+        if (blogPO != null) {
+            result.setSuccess(false);
+            return result;
+        } else {
+            result.setSuccess(true);
+            result.setData(BlogConvert.convertVOFromPO(blogPO));
+            return result;
+        }
+    }
+
+    @Override
+    public AjaxResult<BlogVO> publisDoc(SearchParam param) {
+        AjaxResult<BlogVO> result = new AjaxResult<>();
+        result.setSuccess(false);
+        result.setMessage("发布失败!");
+        if (param.getId() == null) {
+            result.setMessage(result.getMessage() + "id is null.");
+            return result;
+        }
+        DocPO doc = docDAO.queryById(param.getId());
+        return publish(doc);
+    }
+
+    private AjaxResult<BlogVO> publish(DocPO doc) {
+        AjaxResult<BlogVO> result = new AjaxResult<>();
+        result.setSuccess(false);
+        result.setMessage("发布失败!");
+        if (doc == null) {
+            result.setMessage(result.getMessage() + "找不到对应的文档。");
+            return result;
+        }
+        BlogPO blogPO = blogDAO.queryByDocId(doc.getId());
+        if (blogPO == null) {
+            AjaxResult<BlogVO> blog = createBlog(doc);
+            if (blog.isSuccess()) {
+                result.setMessage("发布成功");
+                result.setSuccess(true);
+                result.setData(blog.getData());
+                return result;
+            } else {
+                return result;
+            }
+        }
+        BlogPO blog = BlogConvert.convertFromDoc(doc);
+        blog.setId(blogPO.getId());
+        boolean flag = blogDAO.updateBlogById(blog);
+        if (flag) {
+            result.setSuccess(true);
+            result.setMessage("发布成功！");
+            result.setData(BlogConvert.convertVOFromPO(blogPO));
+        }
+        return result;
     }
 }

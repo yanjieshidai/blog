@@ -13,4 +13,10 @@ public interface IBlogDAO {
     BlogPO queryById(Long id);
 
     List<BlogPO> queryAll();
+
+    BlogPO queryByDocId(Long id);
+
+    BlogPO insert(BlogPO blogPO);
+
+    boolean updateBlogById(BlogPO blogPO);
 }

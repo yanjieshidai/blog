@@ -19,7 +19,7 @@ import java.util.List;
 public class DocDAO extends BaseDAO implements IDocDAO {
 
     @Override
-    public DocPO create(DocPO docPO) {
+    public DocPO insert(DocPO docPO) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         String sql = "insert into t_doc(uuid,title,context,creator,update_time,create_time) values(?,?,?,?,now(),now())";
         jdbcTemplate.update(conn -> {

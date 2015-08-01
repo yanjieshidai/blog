@@ -10,7 +10,7 @@ import java.util.List;
  * Create: 2015-07-14
  */
 public interface IDocDAO {
-    DocPO create(DocPO docPO);
+    DocPO insert(DocPO docPO);
 
     List<DocPO> queryAll();
 

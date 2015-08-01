@@ -66,11 +66,9 @@ public class DocController {
 
     @RequestMapping("/publish")
     @ResponseBody
-    public String publish(SearchParam param) throws IOException {
-        List<BlogVO> blogVOList = blogService.list(param);
-        if (blogVOList.size() > 0)
-            return blogVOList.get(0).getBlogPO().getContext();
-        return "error";
+    public AjaxResult publish(SearchParam param) throws IOException {
+        AjaxResult<BlogVO> ajaxResult = blogService.publisDoc(param);
+        return ajaxResult;
     }
 
 

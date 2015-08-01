@@ -1,5 +1,7 @@
 package com.yanjie.project.blog.bean.po;
 
+import java.io.Serializable;
+
 /**
  * Description: BlogPO
  * Author: wangjie12
@@ -9,6 +11,7 @@ public class BlogPO {
     private Long id;
     private String title;
     private String context;
+    private long docId;
 
     public Long getId() {
         return id;
@@ -32,5 +35,13 @@ public class BlogPO {
 
     public void setContext(String context) {
         this.context = context;
+    }
+
+    public void setDocId(Long docId) {
+        this.docId = docId;
+    }
+
+    public Long getDocId() {
+        return docId;
     }
 }

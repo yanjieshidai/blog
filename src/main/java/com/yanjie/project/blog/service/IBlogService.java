@@ -24,4 +24,6 @@ public interface IBlogService {
 
 
     DocVO getDoc(SearchParam param);
+
+    AjaxResult<BlogVO> publisDoc(SearchParam param);
 }
