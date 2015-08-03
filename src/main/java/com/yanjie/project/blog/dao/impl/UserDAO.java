@@ -30,6 +30,18 @@ public class UserDAO extends BaseDAO implements IUserDAO {
         return users.get(0);
     }
 
+    @Override
+    public UserPO queryById(Long id) {
+        String sql = "select * from t_user where id= ?";
+        Object[] params = new Object[]{id};
+        int[] types = new int[]{Types.INTEGER};
+        List<UserPO> users = jdbcTemplate.query(sql, params, types, new UserMapper());
+        if (users == null || users.isEmpty()) {
+            return null;
+        }
+        return users.get(0);
+    }
+
     protected class UserMapper implements RowMapper {
         @Override
         public Object mapRow(ResultSet rs, int rowNum) throws SQLException {

@@ -1,11 +1,10 @@
 package com.yanjie.project.blog.web.admin;
 
-import com.yanjie.project.blog.bean.AjaxResult;
+import com.yanjie.project.blog.bean.result.AjaxResult;
 import com.yanjie.project.blog.bean.param.SearchParam;
 import com.yanjie.project.blog.bean.vo.BlogVO;
 import com.yanjie.project.blog.bean.vo.DocVO;
 import com.yanjie.project.blog.service.IBlogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

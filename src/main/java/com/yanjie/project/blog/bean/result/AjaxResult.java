@@ -1,4 +1,4 @@
-package com.yanjie.project.blog.bean;
+package com.yanjie.project.blog.bean.result;
 
 /**
  * Description: AjaxResult
@@ -10,6 +10,21 @@ public class AjaxResult<T> {
     private Integer status;
     private boolean success;
     private T data;
+
+    public AjaxResult() {
+
+    }
+
+    public AjaxResult(boolean success, T data, String message) {
+        this.success = success;
+        this.data = data;
+        this.message = message;
+    }
+
+    public AjaxResult(boolean success, T data) {
+        this.success = success;
+        this.data = data;
+    }
 
     public String getMessage() {
         return message;

@@ -1,5 +1,6 @@
 package com.yanjie.project.blog.bean.convert;
 
+import com.yanjie.project.blog.bean.po.UserAuthPO;
 import com.yanjie.project.blog.bean.po.UserPO;
 import com.yanjie.project.blog.bean.vo.UserVO;
 
@@ -30,5 +31,14 @@ public class UserConvert {
             userVOList.add(convertVOFromPO(userPO));
         }
         return userVOList;
+    }
+
+    public static UserVO convertVOFromPOAndAuth(UserPO userPO, List<UserAuthPO> userAuthPOList) {
+        UserVO userVO = convertVOFromPO(userPO);
+        if (userVO == null) {
+            return null;
+        }
+        userVO.setUserAuthList(UserAuthConvert.convertVOListFromPOList(userAuthPOList));
+        return userVO;
     }
 }

@@ -1,6 +1,6 @@
 package com.yanjie.project.blog.service;
 
-import com.yanjie.project.blog.bean.AjaxResult;
+import com.yanjie.project.blog.bean.result.AjaxResult;
 import com.yanjie.project.blog.bean.param.SearchParam;
 import com.yanjie.project.blog.bean.vo.BlogVO;
 import com.yanjie.project.blog.bean.vo.DocVO;

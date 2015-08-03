@@ -9,4 +9,6 @@ import com.yanjie.project.blog.bean.po.UserPO;
  */
 public interface IUserDAO {
     UserPO queryByLogin(String login, String passwd);
+
+    UserPO queryById(Long id);
 }

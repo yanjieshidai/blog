@@ -1,6 +1,6 @@
 package com.yanjie.project.blog.web;
 
-import com.yanjie.project.blog.bean.AjaxResult;
+import com.yanjie.project.blog.bean.result.AjaxResult;
 import com.yanjie.project.blog.bean.vo.UserVO;
 import com.yanjie.project.blog.service.IUserService;
 import com.yanjie.project.blog.util.UserUtil;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**

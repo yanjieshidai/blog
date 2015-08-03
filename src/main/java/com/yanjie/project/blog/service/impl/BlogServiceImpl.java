@@ -1,6 +1,6 @@
 package com.yanjie.project.blog.service.impl;
 
-import com.yanjie.project.blog.bean.AjaxResult;
+import com.yanjie.project.blog.bean.result.AjaxResult;
 import com.yanjie.project.blog.bean.convert.BlogConvert;
 import com.yanjie.project.blog.bean.convert.DocConvert;
 import com.yanjie.project.blog.bean.param.SearchParam;
@@ -11,7 +11,6 @@ import com.yanjie.project.blog.bean.vo.DocVO;
 import com.yanjie.project.blog.dao.IBlogDAO;
 import com.yanjie.project.blog.dao.IDocDAO;
 import com.yanjie.project.blog.service.IBlogService;
-import com.yanjie.project.blog.util.UserUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
